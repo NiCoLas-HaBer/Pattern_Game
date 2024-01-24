@@ -1,0 +1,14 @@
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\bin\Debug\net6.0\PatternsColors.exe
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\bin\Debug\net6.0\PatternsColors.deps.json
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\bin\Debug\net6.0\PatternsColors.runtimeconfig.json
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\bin\Debug\net6.0\PatternsColors.dll
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\bin\Debug\net6.0\PatternsColors.pdb
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.AssemblyInfoInputs.cache
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.AssemblyInfo.cs
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.csproj.CoreCompileInputs.cache
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.dll
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\refint\PatternsColors.dll
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.pdb
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\PatternsColors.genruntimeconfig.cache
+C:\Users\NH\OneDrive - University of Saint Joseph\Desktop\CS\PatternsColors\PatternsColors\obj\Debug\net6.0\ref\PatternsColors.dll
