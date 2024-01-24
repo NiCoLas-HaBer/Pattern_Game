@@ -8,6 +8,6 @@ namespace PatternsColors.Shapes
 {
     public class Circle : IShape
     {
-        public string shape { get; set; } = "Circle";
+        public string name { get; set; } = "Circle";
     }
 }

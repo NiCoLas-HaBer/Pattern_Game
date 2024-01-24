@@ -24,16 +24,17 @@ namespace PatternsColors
             Random rnd = new Random();
             Color = color[rnd.Next(0,color.Counting())];
             Shape = shape[rnd.Next(0,shape.Counting())];
-            score = this.GetType().GetProperties().Count() -1;
+            score = this.GetType().GetProperties().Count()-1;
             Console.WriteLine(score);
         }
         public virtual void Game()
         {
             Console.WriteLine("You're in the nooby level");
-            //foreach(IShape shape_  in shape)
-            //{
-
-            //}
+            int index = 0;
+            foreach (IShape shape_ in shape)
+            {
+                Console.WriteLine($"{index + 1}-{shape_.name}");
+            }
         }
     }
 }

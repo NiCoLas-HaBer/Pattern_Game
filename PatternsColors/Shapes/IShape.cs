@@ -8,6 +8,6 @@ namespace PatternsColors.Shapes
 {
     public interface IShape
     {
-        public string shape { get; set; }
+        public string name { get; set; }
     }
 }

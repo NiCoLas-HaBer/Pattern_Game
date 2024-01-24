@@ -8,6 +8,6 @@ namespace PatternsColors.Shapes
 {
     internal class Square : IShape
     {
-        public string shape { get; set; } = "Square";
+        public string name { get; set; } = "Square";
     }
 }

@@ -7,6 +7,7 @@ namespace PatternsColors
         {
             Console.WriteLine("Hello world");
             Nooby nb  = new Nooby();
+            nb.Game();
 
         }
     }
