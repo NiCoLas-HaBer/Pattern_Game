@@ -44,43 +44,9 @@ namespace PatternsColors
 
         public IEnumerator GetEnumerator()
         {
-            return new MyEnumerator(TheShapes);
+            return new MyEnumerator<IShape>(TheShapes);
         }
 
-
-
-        public class MyEnumerator : IEnumerator
-        {
-            private List<IShape> items;
-            private int position = -1;
-
-            public MyEnumerator(List<IShape> items)
-            {
-                this.items = items;
-            }
-
-            public bool MoveNext()
-            {
-                position++;
-                return position < items.Count;
-            }
-
-            public void Reset()
-            {
-                position = -1;
-            }
-
-            public object Current
-            {
-                get
-                {
-                    if (position >= 0 && position < items.Count)
-                        return items[position];
-                    else
-                        throw new InvalidOperationException();
-                }
-            }
-        }
     }
 }
 // Example usage

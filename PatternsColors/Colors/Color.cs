@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PatternsColors.Colors
 {
-    public class Color
+    public class Color : IEnumerable
     {
         private List<IColors> TheColors;
 
@@ -37,6 +38,11 @@ namespace PatternsColors.Colors
         public int Counting()
         {
             return TheColors.Count;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new MyEnumerator<IColors>(TheColors);
         }
     }
 }

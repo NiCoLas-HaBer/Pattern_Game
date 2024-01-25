@@ -8,6 +8,6 @@ namespace PatternsColors.Colors
 {
     internal class Black : IColors
     {
-        public string Name { get; set; } = "Black";
+        public string name { get; set; } = "Black";
     }
 }

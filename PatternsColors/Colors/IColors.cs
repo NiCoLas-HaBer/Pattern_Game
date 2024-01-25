@@ -8,6 +8,6 @@ namespace PatternsColors.Colors
 {
     public interface IColors
     {
-        string Name { get; set; }
+        string name { get; set; }
     }
 }

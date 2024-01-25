@@ -12,5 +12,8 @@ namespace PatternsColors
     {
         public IColors Color { get; set; }
         public IShape Shape { get; set; }
+        public Color color { get; set; }
+
+        public Shape shape { get; set; }
     }
 }
