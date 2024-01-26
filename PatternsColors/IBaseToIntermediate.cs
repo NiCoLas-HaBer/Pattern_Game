@@ -1,4 +1,5 @@
 ﻿using PatternsColors.Colors;
+using PatternsColors.Patterns;
 using PatternsColors.Shapes;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,9 @@ using System.Threading.Tasks;
 
 namespace PatternsColors
 {
-    public interface IBase
+    public interface IBaseToIntermediate : IBase
     {
-        public IColors Colorr { get; set; }
-        public IShape Shapee { get; set; }
-        public Color color { get; set; }
-
-        public Shape shape { get; set; }
+        public IPattern Patternn { get; set; }
+        public Pattern pattern { get; set; }
     }
 }

@@ -10,7 +10,28 @@ namespace PatternsColors.Colors
     public class Color : IEnumerable
     {
         private List<IColors> TheColors;
+        //public Type GetElementType
+        //{
+        //    get
+        //    {
+        //        return typeof(IColors);
+        //    }
+        //}
 
+        public  Type GetElementType
+        {
+            get
+            {
+                if (TheColors.Count > 0)
+                {
+                    // Assuming that all elements implement IColors
+                    Type elementType = TheColors[0].GetType();
+                    return elementType;
+                }
+                return null;
+               
+            }
+        }
         public Color(IEnumerable<IColors> colors)
         {
             // Initialize with injected colors
