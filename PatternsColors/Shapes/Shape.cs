@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PatternsColors.Shapes;
 using PatternsColors.Colors;
 using System.Collections;
+using PatternsColors.Levels;
 
 namespace PatternsColors
 {

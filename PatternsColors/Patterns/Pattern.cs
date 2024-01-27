@@ -7,6 +7,7 @@ using PatternsColors.Shapes;
 using PatternsColors.Colors;
 using System.Collections;
 using PatternsColors.Patterns;
+using PatternsColors.Levels;
 
 namespace PatternsColors
 {

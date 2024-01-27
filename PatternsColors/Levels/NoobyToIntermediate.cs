@@ -8,18 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternsColors
+namespace PatternsColors.Levels
 {
-    public class NoobyToIntermediate:Nooby,IBaseToIntermediate
+    public class NoobyToIntermediate : Nooby, IBaseToIntermediate
     {
         public IColors Colorr { get; set; }
         public IShape Shapee { get; set; }
         public IPattern Patternn { get; set; }
         public int score { get; set; }
 
-        public Color color { get; set; } = new Color(new List<IColors> { new Red(), new White(),new Brown() });
+        public Color color { get; set; } = new Color(new List<IColors> { new Red(), new White(), new Brown() });
 
-        public Shape shape { get; set; } = new Shape(new List<IShape> { new Square(), new Circle() , new Rectangle()});
+        public Shape shape { get; set; } = new Shape(new List<IShape> { new Square(), new Circle(), new Rectangle() });
         public Pattern pattern { get; set; } = new Pattern(new List<IPattern> { new Vertical_Lines(), new Horizontal_Lines(), new Mesh() });
 
     }

@@ -2,8 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PatternsColors.Levels;
 
-namespace PatternsColors
+namespace PatternsColors.Levels
 {
     public class MyEnumerator<T> : IEnumerator<T>
     {

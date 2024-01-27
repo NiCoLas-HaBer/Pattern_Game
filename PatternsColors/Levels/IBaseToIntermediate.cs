@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternsColors
+namespace PatternsColors.Levels
 {
     public interface IBaseToIntermediate : IBase
     {

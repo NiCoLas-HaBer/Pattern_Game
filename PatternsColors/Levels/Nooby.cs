@@ -10,13 +10,13 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PatternsColors
+namespace PatternsColors.Levels
 {
-    public class Nooby : IBase
+    public class Nooby : IBase, ILevels
     {
         public IColors Colorr { get; set; }
         public IShape Shapee { get; set; }
-        public int score {  get; set; }
+        public int score { get; set; }
 
         public Color color { get; set; } = new Color(new List<IColors> { new Red(), new White() });
 
@@ -27,81 +27,25 @@ namespace PatternsColors
             //Random rnd = new Random();
             //Color = color[rnd.Next(0,color.Counting())];
             //Shape = shape[rnd.Next(0,shape.Counting())];
-            score = this.GetType().GetProperties().Where(propa => !(propa.PropertyType.GetInterfaces().Contains(typeof(IEnumerable)))).Count()-1;
+            score = GetType().GetProperties().Where(propa => !propa.PropertyType.GetInterfaces().Contains(typeof(IEnumerable))).Count() - 1;
 
             //Console.WriteLine(score);
         }
-        public virtual bool Game()
+
+        public bool kk()
         {
-            Console.WriteLine("You're in the nooby level");
-            Console.WriteLine(new string('-', "You're in the nooby level".Length));
-            Console.WriteLine();
+            Random rnd = new Random();
 
-
-            Console.WriteLine("Shapes:");
-            Console.WriteLine();
-
-            int index = 0;
-            foreach (IShape shape_ in shape)
-            {
-                Console.WriteLine($"{index + 1}-{shape_.name}");
-            }
-
-            Console.WriteLine("Colors:");
-            Console.WriteLine();
-
-            index = 0;
-            foreach (IColors color_ in color)
-            {
-                Console.WriteLine($"{index + 1}-{color_.name}");
-            }
-
-            
-            do
-            {
-                int ScOrE = 0;
-                Console.Write("Shape choice:");
-                int shapeChoice_ = Convert.ToInt32(Console.ReadLine())-1;
-                
-                Console.Write("Color choice:");
-                int colorChoice_ = Convert.ToInt32(Console.ReadLine())-1;
-                Console.WriteLine();
-                if (shape[shapeChoice_] == Shapee)
-                {
-                    ScOrE++;
-                }
-                if (color[colorChoice_] == Colorr)
-                {
-                    ScOrE ++;
-                }
-                Console.WriteLine($"You chose: {shape[shapeChoice_].name}-{color[colorChoice_].name}\n You were right on {ScOrE} of your choices");
-                if(ScOrE == score)
-                {
-                    Console.WriteLine("Congrats");
-                    Console.WriteLine("Next level");
-                    Thread.Sleep(1000);
-                    
-                    return true;
-                    
-                }
-
-            } while (true);
-        }
-
-        public void kk()
-        {
-            Random rnd =new Random();
-
-            Type classType = this.GetType();
+            Type classType = GetType();
 
 
             var directlyImplementedInterfaces = classType.GetInterfaces()  //Gets the interface that is directly implemented by the class "this"
                 .Except(classType.GetInterfaces().SelectMany(interfaceType => interfaceType.GetInterfaces())).FirstOrDefault();
 
-            if (directlyImplementedInterfaces !=null)
-            {
-                //Type interfaceType = (Type)directlyImplementedInterfaces; 
-            }
+            //if (directlyImplementedInterfaces !=null)
+            //{
+            //    //Type interfaceType = (Type)directlyImplementedInterfaces; 
+            //}
 
 
             //Type interfaceType = (Type)directlyImplementedInterfaces;
@@ -111,12 +55,15 @@ namespace PatternsColors
 
             IEnumerable<PropertyInfo> SeriesOfPropertiese = classType.GetProperties() //Series of properties implemented by the interface that are not IEnumerable
                 .Where(prop => typeof(IEnumerable).IsAssignableFrom(prop.PropertyType));
-
+            Console.WriteLine($"\x1B[4m{classType.Name} level:\x1B[0m");
+            Console.WriteLine("");
             foreach (PropertyInfo series in SeriesOfPropertiese)
             {
                 object seriesValue = series.GetValue(this);
                 if (seriesValue != null && seriesValue is IEnumerable enumerable)
                 {
+                    
+
                     Console.WriteLine($"{series.Name}:");
                     Console.WriteLine("");
                     int indexer = 0;
@@ -161,17 +108,18 @@ namespace PatternsColors
 
                                     if (prop.GetValue(this) == null)
                                     {
-                                        prop.SetValue(this, randomElement, null); 
+                                        prop.SetValue(this, randomElement, null);
                                     }
 
+                                    Console.WriteLine("");
                                     Console.WriteLine($"Choose the {enumerable.GetType().Name}");
-                                    int CHOICE = Convert.ToInt32(Console.ReadLine());
-                                    if (prop.GetValue(this) == enumerable.Cast<object>().ElementAt(CHOICE-1))
+                                    //int CHOICE = Convert.ToInt32(Console.ReadLine())-1;
+                                    if (prop.GetValue(this) == enumerable.Cast<object>().ElementAt(choice_verification.choice(enumerable)))
                                     {
                                         SCORING++;
                                         Console.WriteLine("Voila");
                                         //var propValue = prop.GetValue(this);
-                                       // var enumerableElement = enumerable.Cast<object>().ElementAt(CHOICE);
+                                        // var enumerableElement = enumerable.Cast<object>().ElementAt(CHOICE);
 
                                         //Console.WriteLine($"{propValue?.GetType().Name} &&&&&&&&&&&&&&&&&&FFFFFFFFFFFFFFFFFF&&&&&&&&&&&& {enumerableElement?.GetType().Name}");
 
@@ -183,20 +131,23 @@ namespace PatternsColors
                         }
 
                     }
-                } 
-                if(SCORING == this.score)
-                {
-                    Console.WriteLine("Congrats, you passed the level");
                 }
-                if (SCORING != this.score)
+                if (SCORING == score)
                 {
-                    Console.WriteLine("You've failed. Repeat");
+                    Console.WriteLine("_____________________Congrats, you passed the level_______________________");
+                    return true;
                 }
-            } while (SCORING != this.score);
+                if (SCORING != score)
+                {
+
+                    Console.WriteLine("________________________You've failed. Repeat_________________________");
+                }
+            } while (SCORING != score);
             //foreach (var series in SeriesOfPropertiese)
             //{
             //    Console.WriteLine(series.Name);
             //}
+            return false;
 
         }
     }
