@@ -45,6 +45,7 @@ namespace PatternsColors.Levels
             IEnumerable<PropertyInfo> SeriesOfPropertiese = classType.GetProperties()
                 .Where(prop => typeof(IEnumerable).IsAssignableFrom(prop.PropertyType));
 
+            Console.WriteLine("");
             Console.WriteLine($"\x1B[4m{classType.Name} level:\x1B[0m");
             Console.WriteLine("");
 
