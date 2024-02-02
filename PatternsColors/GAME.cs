@@ -11,13 +11,13 @@ namespace PatternsColors
     public class GAME
     {
         public int Niveau { get; set; } = 0;
-        public List<ILevels> Levels { get; } = LoadLevels();
+        public List<ILevels> Levels { get; } = LoadLevels(); // Load all the classes that implements ILevels in a List
 
         private static List<ILevels> LoadLevels()
         {
             List<ILevels> levels = new List<ILevels>();
 
-            // Get all types in the assembly that implement IBase
+            // Get all classes in the assembly that implement ILevels
             var types = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => typeof(ILevels).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract);
 
@@ -31,35 +31,28 @@ namespace PatternsColors
             return levels;
         }
 
-        public void gg()
-        {
-            foreach (var level in Levels)
-            {
-                Console.WriteLine(level);
-            }
-        }
-
         public void game()
         {
             ILevels currentLevel = Levels[Niveau];
 
             do
             {
-                if (currentLevel.kk())
+                if (currentLevel.GameLogic())
                 {
                     Niveau++;
                     if (Niveau < Levels.Count)
                     {
-                        currentLevel = Levels[Niveau];
+                        // Increase the difficulty level if the player succeeds
+                        currentLevel = Levels[Niveau]; 
                     }
                     else
                     {
-                        // Handle the case where all levels are completed
+                        // The case when allt he levels are completed
                         break;
                     }
                 }
 
-            } while (!currentLevel.kk());
+            } while (!currentLevel.GameLogic());
         }
     }
 }

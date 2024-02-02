@@ -11,7 +11,7 @@ namespace PatternsColors.Levels
     {
         public static int choice(IEnumerable enumerable)
         {
-            int maxAttempts = 3000; // Set a maximum number of attempts
+            int maxAttempts = 3000;
 
             for (int attempt = 1; attempt <= maxAttempts; attempt++)
             {
@@ -25,10 +25,9 @@ namespace PatternsColors.Levels
                 Console.WriteLine($"Invalid input. Please enter a valid integer between 1 and {enumerable.Cast<object>().Count()}");
             }
 
-            // You can handle the case where the user exceeds the maximum number of attempts.
             Console.WriteLine("You've exceeded the maximum number of attempts. Exiting...");
-            Environment.Exit(0); // Consider a more graceful exit mechanism
-            return -1; // This line is just to satisfy the compiler; it won't be reached
+            Environment.Exit(0);
+            return -1; 
         }
     }
 }

@@ -8,7 +8,7 @@ namespace PatternsColors.Levels
 {
     public interface ILevels
     {
-        public bool kk();
+        public bool GameLogic();
     }
 
 }

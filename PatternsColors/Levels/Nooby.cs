@@ -24,40 +24,32 @@ namespace PatternsColors.Levels
 
         public Nooby()
         {
-            //Random rnd = new Random();
-            //Color = color[rnd.Next(0,color.Counting())];
-            //Shape = shape[rnd.Next(0,shape.Counting())];
             score = GetType().GetProperties().Where(propa => !propa.PropertyType.GetInterfaces().Contains(typeof(IEnumerable))).Count() - 1;
-
-            //Console.WriteLine(score);
         }
 
-        public bool kk()
+        public bool GameLogic()
         {
             Random rnd = new Random();
 
             Type classType = GetType();
 
-
-            var directlyImplementedInterfaces = classType.GetInterfaces()  //Gets the interface that is directly implemented by the class "this"
+            //Gets the interface that is directly implemented by the class instance, IBase in this case
+            var directlyImplementedInterfaces = classType.GetInterfaces()
                 .Except(classType.GetInterfaces().SelectMany(interfaceType => interfaceType.GetInterfaces())).FirstOrDefault();
 
-            //if (directlyImplementedInterfaces !=null)
-            //{
-            //    //Type interfaceType = (Type)directlyImplementedInterfaces; 
-            //}
-
-
-            //Type interfaceType = (Type)directlyImplementedInterfaces;
-
-            IEnumerable<PropertyInfo> InterfaceProperties = classType.GetProperties()//directlyImplementedInterfaces.GetProperties() //Series of properties implemented by the interface that are not IEnumerable
+            //Gets the properties that the types aren't implementing IEnumerable nor int type
+            IEnumerable<PropertyInfo> InterfaceProperties = classType.GetProperties()
                 .Where(prop => !typeof(IEnumerable).IsAssignableFrom(prop.PropertyType) && prop.PropertyType != typeof(int));
 
-            IEnumerable<PropertyInfo> SeriesOfPropertiese = classType.GetProperties() //Series of properties implemented by the interface that are not IEnumerable
+            //Gets the properties that their types implements an IEnumerable
+            IEnumerable<PropertyInfo> SeriesOfPropertiese = classType.GetProperties()
                 .Where(prop => typeof(IEnumerable).IsAssignableFrom(prop.PropertyType));
+
             Console.WriteLine($"\x1B[4m{classType.Name} level:\x1B[0m");
             Console.WriteLine("");
-            foreach (PropertyInfo series in SeriesOfPropertiese)
+
+            //List all the game criteria and choices
+            foreach (PropertyInfo series in SeriesOfPropertiese) 
             {
                 object seriesValue = series.GetValue(this);
                 if (seriesValue != null && seriesValue is IEnumerable enumerable)
@@ -81,13 +73,8 @@ namespace PatternsColors.Levels
                 SCORING = 0;
                 foreach (PropertyInfo prop in InterfaceProperties)
                 {
-                    //Console.WriteLine(series.Name);
-                    //Console.WriteLine(prop.PropertyType.Name + "55555555555555555555555555555");
-
                     foreach (PropertyInfo series in SeriesOfPropertiese)
                     {
-
-                        //Console.WriteLine(series.PropertyType.Name);
                         var seriesValue = series.GetValue(this);
                         if (seriesValue != null && seriesValue is IEnumerable enumerable)
                         {
@@ -95,17 +82,11 @@ namespace PatternsColors.Levels
                             {
                                 var randomIndex = rnd.Next(0, enumerable.Cast<object>().Count());
                                 var randomElement = enumerable.Cast<object>().ElementAt(randomIndex);
-                                //Console.WriteLine(randomIndex + "''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
-                                //Console.WriteLine(randomElement.ToString() + "lllllllllllllllllllllll");
-                                ////Console.WriteLine(randomElement.GetType().GetInterfaces()+ "hhhhhhhhhhhhhhhh" + prop.PropertyType);
-                                //Console.WriteLine(randomElement.GetType().GetInterfaces()[0] + "###" + prop.PropertyType);
-                                //Console.WriteLine(enumerable.GetType().Name + "###" + prop.PropertyType);
-                                //Console.WriteLine(randomElement.GetType().GetInterfaces()[0] == prop.PropertyType);
 
-                                if (randomElement.GetType().GetInterfaces()[0] == prop.PropertyType)//randomElement.GetType().Equals(prop.PropertyType))//randomElement is IColors && randomElement.GetType() == prop.PropertyType)
+                                //All the Game logic is inside this if statement. When the property is a container class, and the content implements the same interface as one of the other properties: The outcome is true  
+                                if (randomElement.GetType().GetInterfaces()[0] == prop.PropertyType)
                                 {
-                                    //Console.WriteLine($"{randomElement.GetType().GetInterfaces()[0]}");
-
+                                    //this if statement is ti get sure that we assign a value to the variable only once each level
                                     if (prop.GetValue(this) == null)
                                     {
                                         prop.SetValue(this, randomElement, null);
@@ -113,40 +94,30 @@ namespace PatternsColors.Levels
 
                                     Console.WriteLine("");
                                     Console.WriteLine($"Choose the {enumerable.GetType().Name}");
-                                    //int CHOICE = Convert.ToInt32(Console.ReadLine())-1;
                                     if (prop.GetValue(this) == enumerable.Cast<object>().ElementAt(choice_verification.choice(enumerable)))
                                     {
                                         SCORING++;
-                                        Console.WriteLine("Voila");
-                                        //var propValue = prop.GetValue(this);
-                                        // var enumerableElement = enumerable.Cast<object>().ElementAt(CHOICE);
-
-                                        //Console.WriteLine($"{propValue?.GetType().Name} &&&&&&&&&&&&&&&&&&FFFFFFFFFFFFFFFFFF&&&&&&&&&&&& {enumerableElement?.GetType().Name}");
-
-                                        //Console.WriteLine(prop.GetValue(this).GetType().Name+"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"+ enumerable.Cast<object>().ElementAt(0).GetType().Name);
                                     }
                                 }
                             }
-
                         }
-
                     }
                 }
                 if (SCORING == score)
                 {
-                    Console.WriteLine("_____________________Congrats, you passed the level_______________________");
+                    Console.WriteLine("_____________________Congrats, you passed the level_______________________\n");
                     return true;
                 }
                 if (SCORING != score)
                 {
+                    Console.WriteLine("");
+                    Console.WriteLine("┌─────────────────┐");
+                    Console.WriteLine($"      Score:{SCORING}");
+                    Console.WriteLine("└─────────────────┘");
 
-                    Console.WriteLine("________________________You've failed. Repeat_________________________");
+                    Console.WriteLine("________________________You've failed. Repeat_________________________\n");
                 }
             } while (SCORING != score);
-            //foreach (var series in SeriesOfPropertiese)
-            //{
-            //    Console.WriteLine(series.Name);
-            //}
             return false;
 
         }

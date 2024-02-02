@@ -64,6 +64,5 @@ namespace PatternsColors
 
     }
 }
-// Example usage
-//var color = new Color(new List<IColors> { new Red(), new White(), new Yellow(), new CustomColor() });
+
 

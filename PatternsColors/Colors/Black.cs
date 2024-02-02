@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PatternsColors.Colors
 {
-    internal class Black : IColors
+    public class Black : IColors
     {
         public string name { get; set; } = "Black";
     }
